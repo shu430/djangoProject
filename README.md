@@ -1,2 +1,2 @@
 # djangoProject
-django触ってみた。
+djangoでtodoApp作ってみた。
