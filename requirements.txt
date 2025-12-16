@@ -1,5 +1,8 @@
+asgiref==3.11.0
 certifi==2025.11.12
 distlib==0.4.0
+Django==6.0
 filelock==3.20.0
 platformdirs==4.5.0
+sqlparse==0.5.4
 virtualenv==20.35.4
