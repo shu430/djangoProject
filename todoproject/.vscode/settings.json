@@ -1,0 +1,8 @@
+{
+    "editor.codeActionsOnSave": null,
+    "editor.fontWeight": null,
+      
+    // 自動import補完
+    "python.analysis.autoImportCompletions": true,
+    "python.pythonPath": "/usr/local/bin/python3",
+      }
