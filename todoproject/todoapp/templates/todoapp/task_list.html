@@ -1,9 +1,30 @@
+<!-- ログインユーザー -->
+{% if request.user.is_authenticated %}
+<p>{{request.user}}</p>
+<form action="{% url 'logout' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">ログアウト</button>
+</form>
+{% else %}
+<a href="{% url 'login' %}">ログイン</a>
+{% endif %}
+
+<!-- Todoリスト -->
 <h1>Todoリスト</h1>
 <a href="{% url 'create-task' %}" %>タスクの追加</a>
 
+<!-- タスク検索 -->
+<form method="GET">
+    <input type="text" name="search" value="{{search}}">
+    <input type="submit" value="検索">
+
+    <a href="{% url 'tasks' %}">クリア</a>
+</form>
+
+<!-- タスク一覧 -->
 <table>
     <tr>
-        <th>タスク</th>
+        <th>タスク一覧</th>
     </tr>
     {% for task in tasks %}
         <tr>
