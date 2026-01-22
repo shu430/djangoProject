@@ -1,37 +1,69 @@
-<!-- ログインユーザー -->
-{% if request.user.is_authenticated %}
-<p>{{request.user}}</p>
-<form action="{% url 'logout' %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">ログアウト</button>
-</form>
-{% else %}
-<a href="{% url 'login' %}">ログイン</a>
-{% endif %}
+<!-- 継承base.html開始位置-->
+{% extends 'todoapp/base.html' %}
+{% block content %}
+
+<div class="header">
+    <h1>{{request.user}}のタスク</h1>
+</div>
+
 
 <!-- Todoリスト -->
-<h1>Todoリスト</h1>
-<a href="{% url 'create-task' %}" %>タスクの追加</a>
+<div class="searchWrapper">
+    <!-- タスク検索 -->
+    <form method="GET">
+        <input type="text" name="search" value="{{search}}" class="searchInput">
+        <input type="submit" value="検索" class="Button">
+    
+        <a href="{% url 'tasks' %}">クリア</a>
+    </form>
+    <a href="{% url 'create-task' %}" class="addButton">＋</a>
+</div>
 
-<!-- タスク検索 -->
-<form method="GET">
-    <input type="text" name="search" value="{{search}}">
-    <input type="submit" value="検索">
-
-    <a href="{% url 'tasks' %}">クリア</a>
-</form>
-
-<!-- タスク一覧 -->
-<table>
-    <tr>
-        <th>タスク一覧</th>
-    </tr>
+ <div class="tasksWrapper">
     {% for task in tasks %}
-        <tr>
-            <td>{{task.title}}</td>
-            <td><a href="{% url 'task' task.id %}">確認</a></td>
-            <td><a href="{% url 'edit-task' task.id %}">更新</a></td>
-            <td><a href="{% url 'delete-task' task.id %}">削除</a></td>
-        </tr>
+    <div class="taskWrapper">
+        {% if task.completed %}
+        <!-- タスクが完了しているなら-->
+        <div class="taskTitle">
+            <div class="taskCompletedIcon"></div>
+            <s><a href="{% url 'task' task.id %}">{{task}}</a></s>
+        </div>
+        <div>
+            <a href="{% url 'edit-task' task.id %}" class="editButton">&#x270F;</a>
+            <a href="{% url 'delete-task' task.id %}" class="deleteButton">×</a>
+        </div>
+        {% else %}
+        <!-- タスクが未完了なら -->
+        <div class="taskTitle">
+            <div class="taskUnCompletedIcon"></div>
+            <a href="{% url 'task' task.id %}">{{task}}</a>
+        </div>
+        <div>
+            <a href="{% url 'edit-task' task.id %}" class="editButton">&#x270F;</a>
+            <a href="{% url 'delete-task' task.id %}" class="deleteButton">×</a>
+        </div>
+        {% endif %}
+
+    </div>
+
+    {% empty %}
+    <h3 style="padding-left: 20px;">タスクがありません</h3>
+
     {% endfor %}
-</table>
+</div>
+
+<!-- ログインユーザー-->
+<div class="loginAndLogout">
+    {% if request.user.is_authenticated %}
+    <!-- <p>{{request.user}}</p>   -->
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="Button">ログアウト</button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">ログイン</a>
+    {% endif %}
+
+</div>
+<!-- 継承base.html終了位置-->
+{% endblock content %}

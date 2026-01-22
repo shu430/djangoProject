@@ -1,9 +1,21 @@
-<h1>ログイン</h1>
+<!-- 継承base.html開始位置-->
+{% extends 'todoapp/base.html' %}
+{% block content %}
 
-<form action="" method="POST">
+<div class="header">
+    <h1>ログイン</h1>
+</div>
+
+<form action="" method="POST" style="padding: 20px">
     {% csrf_token %} {{form.as_p}}
-    <input type="submit" value="ログイン">
+    <input type="submit" value="ログイン" class="Button">
 </form>
 
-<p>アカウントを持っていませんか</p>
-<a href="{% url 'register' %}">新規登録</a>
+<hr>
+
+<div class="accountWrapper">
+    <p>アカウントを持っていませんか</p>
+    <a href="{% url 'register' %}" class="Button">新規登録</a>
+    <!-- 継承base.html終了位置-->
+    {% endblock content %}
+</div>

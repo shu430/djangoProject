@@ -43,7 +43,7 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     #fields = "__all__" #['uesr', 'title',...]
-    fields = ['title', 'completed', 'description']
+    fields = ['title', 'description', 'completed']
     success_url = reverse_lazy("tasks")
 
     #タスク作成時、作成者が所有者になるよう設定
@@ -79,6 +79,5 @@ class RegisterTodoapp(FormView):
     #ユーザ追加時に保存する処理
     def form_valid(self, form):
         user = form.save()
-        if user is not None:
-            login(self.request, user)
+        login(self.request, user)
         return super().form_valid(form)

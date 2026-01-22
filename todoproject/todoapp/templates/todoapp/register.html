@@ -1,9 +1,27 @@
-<h1>新規登録</h1>
+<!-- 継承base.html開始位置-->
+{% extends 'todoapp/base.html' %} {% block content %}
 
-<form action="" method="POST">
-    {% csrf_token %} {{form.as_p}}
-    <input type="submit" value="新規登録">
+<div class="header">
+    <h1>新規登録</h1>
+</div>
+
+
+<form action="" method="POST" style="padding: 20px">
+    {% csrf_token %}
+    <label for="">ユーザー名</label>
+    {{form.username}}
+    <label for="">パスワード</label>
+    {{form.password1}}
+    <label for="">パスワード確認用</label>
+    {{form.password2}}
+    {{form.errors}}
+    <br>
+    <input type="submit" value="新規登録" class="Button" style="margin-top: 10px;">
 </form>
-
-<p>既にアカウントを持っていますか？</p>
-<a href="{% url 'login' %}">ログイン画面へ</a>
+<hr>
+<div class="accountWrapper">
+    <p>既にアカウントを持っていますか？</p>
+    <a href="{% url 'login' %}" class="Button">ログイン画面へ</a>
+</div>
+<!-- 継承base.html終了位置-->
+{% endblock content %}

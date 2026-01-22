@@ -1,0 +1,117 @@
+body{
+    background-color: #daedf9;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.todoAppWrapper{
+    max-width: 730px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0px 10px 15px -5px #777777;
+    border-radius: 10px;
+}
+a {
+    color: #595959;
+    text-decoration: none;
+}
+h1{
+    margin: 0;
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+    background: #2A7B9B;
+    background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    border-radius: 10px 10px 0 0;
+    color: white;
+}
+
+.taskWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #4646466a;
+}
+.taskTitle{
+    display: flex;
+    align-items: center;
+}
+.taskCompletedIcon{
+    height: 20px;
+    width: 20px;
+    background-color: lightgreen;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.taskUnCompletedIcon{
+    height: 20px;
+    width: 20px;
+    background-color: #595959;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.editButton{
+    color: #3a873a;
+}
+.deleteButton{
+    padding: 10px;
+    color: red;
+}
+.loginAndLogout{
+    padding: 20px;
+}
+.loginAndLogout a{
+    color: lightcoral;
+}
+
+/* タスク検索と追加のフォーム */
+.searchWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.searchInput{
+    height: 24px;
+    outline: none;
+    border: 1px solid lightgreen;
+    padding: 2px 4px;
+    border-radius: 5px;
+    width: 160px !important;
+}
+
+.Button{
+    border: 1px solid lightgreen;
+    padding: 4px 10px;
+    background-color: #fafafa;
+    color: lightseagreen;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.Button:hover{
+    background-color: lightseagreen;
+    color: white;
+    transition: all 0.4s;
+}
+
+.addButton{
+    font-size: 32px;
+    color: lightseagreen;
+}
+
+label {
+    display: block;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+}
+
+.accountWrapper {
+    padding: 0px 20px 20px 20px;
+}
